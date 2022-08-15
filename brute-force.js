@@ -36,6 +36,7 @@ document.getElementById('goBtn').addEventListener('click', () => {
   words.length = 0;
   generateWords(length, letters);
   words = [...new Set(words)]; // remove duplicates from duplicate letters (two Es or whatever)
+  words = words.filter(word => dictionary.includes(word.toUpperCase()));
 
   displayWords.innerText = words.join('\n');
 }, false);
