@@ -21,7 +21,7 @@ function generateWords(length, letters, ...takenLetters) {
   }
 
   for (const i of remaining) {
-    if (level === -1) {
+    if (level <= -1) {
       words.push(takenLetters.join(''));
       return;
     }
@@ -29,7 +29,17 @@ function generateWords(length, letters, ...takenLetters) {
   }
 }
 
-document.getElementById('goBtn').addEventListener('click', () => {
+function showWords(words) {
+  displayWords.innerHTML = '';
+  words.forEach(word => {
+    const newWord = document.createElement('span');
+    newWord.textContent = word;
+    displayWords.append(newWord);
+  })
+}
+
+document.getElementById('lettersForm').addEventListener('submit', e => {
+  e.preventDefault();
   const letters = document.getElementById('letterInput').value;
   const length = parseInt(document.getElementById('lengthInput').value);
 
@@ -38,10 +48,10 @@ document.getElementById('goBtn').addEventListener('click', () => {
   words = [...new Set(words)]; // remove duplicates from duplicate letters (two Es or whatever)
   words = words.filter(word => dictionary.includes(word.toUpperCase()));
 
-  displayWords.innerText = words.join('\n');
+  showWords(words);
 }, false);
 
 document.getElementById('regex').addEventListener('input', e => {
   const regex = new RegExp(e.target.value);
-  displayWords.innerText = words.filter(word => regex.test(word)).join('\n');
+  showWords(words.filter(word => regex.test(word)));
 }, false);

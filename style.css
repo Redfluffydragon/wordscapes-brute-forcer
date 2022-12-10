@@ -37,3 +37,13 @@ input, button, textarea, select {
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
+
+.displayWords {
+  max-width: 60ch;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
+  gap: 2ch;
+  row-gap: 4ch;
+  margin: 0 auto;
+  margin-top: 5ch;
+}
