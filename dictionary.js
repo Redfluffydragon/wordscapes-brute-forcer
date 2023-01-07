@@ -654,6 +654,7 @@ const dictionary = [
   'AFRESH',
   'AFRIT',
   'AFRITS',
+  'AFRO',
   'AFT',
   'AFTER',
   'AFTERS',
